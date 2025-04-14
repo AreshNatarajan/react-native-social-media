@@ -17,6 +17,8 @@ const getuser = require('./routers/getUser')
 const getAllPost = require('./routers/getAllPost')
 const like_dislike = require('./routers/like_dislike')
 const addComment = require('./routers/addComment')
+const follow_unFollow = require('./routers/follow_unFollow')
+const getAllComments = require('./routers/getAllComments')
 
 
 // call dbconnection 
@@ -32,7 +34,9 @@ app.use('/api', newpost)
 app.use('/api', getuser);
 app.use('/api', getAllPost)
 app.use('/api', like_dislike)
-app.use('/api', addComment)
+app.use('/api', addComment);
+app.use('/api', follow_unFollow)
+app.use('/api', getAllComments)
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)
