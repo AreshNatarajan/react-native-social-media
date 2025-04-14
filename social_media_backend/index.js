@@ -14,7 +14,9 @@ const signin = require('./routers/signin');
 const updateuserprofile = require('./routers/updateUserProfile')
 const newpost = require('./routers/newpost');
 const getuser = require('./routers/getUser')
-
+const getAllPost = require('./routers/getAllPost')
+const like_dislike = require('./routers/like_dislike')
+const addComment = require('./routers/addComment')
 
 
 // call dbconnection 
@@ -27,7 +29,10 @@ app.use('/api', signup)
 app.use('/api', signin);
 app.use('/api', updateuserprofile)
 app.use('/api', newpost)
-app.use('/api', getuser)
+app.use('/api', getuser);
+app.use('/api', getAllPost)
+app.use('/api', like_dislike)
+app.use('/api', addComment)
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)

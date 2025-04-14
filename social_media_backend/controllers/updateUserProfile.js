@@ -1,22 +1,29 @@
-const User = require("../models/user")
+const User = require("../models/user");
 
 const updateUserProfile = async (req, res) => {
   try {
-    const { profile, userName, username, bio } = req.body
-    const userID = req.params.id
-    const user = await User.findByIdAndUpdate(userID, { profile, userName, username, bio }, { new: true })
-    const userObjectForJson = {
-      profile: user.profile,
-      userName: user.userName,
-      username: user.username,
-      bio: user.bio,
-      followers: user.followers,
-      following: user.following
-    }
-    res.status(201).json({ status: "success", message: "Updated succesfuly", newUserDetails: userObjectForJson })
-  } catch (error) {
-    res.status(500).json({ status: "error", message: "Update failed" })
-  }
-}
+    const { profile, userName, username, bio } = req.body;
+    const userID = req.params.id;
 
-module.exports = updateUserProfile
+    const updatedUser = await User.findByIdAndUpdate(
+      userID,
+      { profile, userName, username, bio },
+      { new: true, runValidators: true } 
+    ).select("-password"); 
+
+    if (!updatedUser) {
+      return res.status(404).json({ status: "error", message: "User not found" });
+    }
+
+    res.status(200).json({
+      status: "success",
+      message: "Updated successfully",
+      newUserDetails: updatedUser
+    });
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    res.status(500).json({ status: "error", message: "Update failed" });
+  }
+};
+
+module.exports = updateUserProfile;
