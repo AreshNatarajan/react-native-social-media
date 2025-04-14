@@ -6,10 +6,10 @@ const PostSchema = new mongoose.Schema({
     caption: { type: String, default: "" },
     postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
-    comments: [{ text: String, commentedBy: { type: mongoose.Schema.Types.ObjectId, ref: "user" } }]
-    
-}, {timestamps : true})
+    comments: [{ text: String, commentedBy: { type: mongoose.Schema.Types.ObjectId, ref: "user" }, commentedUserProfile: String, commentedUserName: String }]
 
-const Post = mongoose.model('post', PostSchema );
+}, { timestamps: true })
 
-module.exports  = Post;
+const Post = mongoose.model('post', PostSchema);
+
+module.exports = Post;

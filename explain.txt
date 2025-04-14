@@ -3,3 +3,4 @@
  http://localhost:5000/api/signup   => sign up
  http://localhost:5000/api/updateprofile/67fbaf837595c966988ac8a7  => user details update
  http://localhost:5000/api/newpost/67fbaf837595c966988ac8a7     => user new post
+ http://localhost:5000/api/like-dislike/67fcae363c60c5bd9ca5638f/67fbaf837595c966988ac8a7  = like adn dislike
