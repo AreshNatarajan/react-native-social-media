@@ -1,0 +1,5 @@
+    URI for routes;
+ http://localhost:5000/api/signin   => sign in
+ http://localhost:5000/api/signup   => sign up
+ http://localhost:5000/api/updateprofile/67fbaf837595c966988ac8a7  => user details update
+ http://localhost:5000/api/newpost/67fbaf837595c966988ac8a7     => user new post
